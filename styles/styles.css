@@ -1,0 +1,30 @@
+body {
+    width: 100%;
+}
+#main {
+    text-align: center;
+}
+h1 {
+    font-size: 4em;
+}
+#button {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    padding: 5px 40px 5px 40px;
+    border-radius: 24px;
+}
+.content {
+    text-align: center;
+    background-color: white;
+    margin: -5px;
+}
+.newDivs {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+
+}
