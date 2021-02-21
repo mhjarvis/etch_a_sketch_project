@@ -1,36 +1,36 @@
-const container = document.querySelector('#container');    //select #container div
+const container = document.getElementById('container');
+
 let count = 1;
 
-function buildGrid(num) {
+function buildGrid(num) {       //builds grid of divs; set all attributes
 
-    clearGrid("content");
+    clearGrid("box");
 
-    for (let i = 0; i < num; i++) {                             //loop to create the 16 x 16 grid pattern
-        const content = document.createElement('div');         //var content creates new div
-        content.classList.add('content');                      //adds class 'content' to the div
-        container.appendChild(content);                        //create outer column div
+    container.style.setProperty('--grid-rows', num);
+    container.style.setProperty('--grid-cols', num);
 
-        for (let j = 0; j < num; j++) {                         //loop and create row of 16 divs
-            const newDiv = document.createElement('div');      
-            newDiv.className = 'newDivs';                      //add class to divs
-            newDiv.id = ('id' + count);                        //add unique id to each div
-            newDiv.setAttribute('onmouseover', 'onHover(this.id)');  //call onHover function on mouseover
-            content.append(newDiv);                            //add div to document
-            count++;
-        }
-    }
+    for (let i = 0; i < num ** 2; i++) {
+
+        const box = document.createElement('div');
+        container.appendChild(box);
+        box.innerText = "";
+        box.className = 'box';
+        box.id = ('id' + count);
+        box.setAttribute('onmouseover', 'onHover(this.id)');
+        count++;
+    };
 }
 
-function onHover(id) {  //function adds backgroundColor of 'black' to individual ids
+function onHover(id) {          //function adds backgroundColor of 'black' to individual boxes
     document.getElementById(id).style.backgroundColor = "black";
 };
 
-function reSpec() {
+function reSet() {              //function to reset the game and prompt user for size of grid
     let gridSize = prompt("How big of a grid do you want (Enter 1 - 100)");
     buildGrid(gridSize);
 }
 
-function clearGrid(className) {
+function clearGrid(className) { //function call to remove all box divs
     var element = document.getElementsByClassName(className);
     
     while(element.length > 0) {
