@@ -4,8 +4,6 @@ let count = 1;
 
 function buildGrid(num) {       //builds grid of divs; set all attributes
 
-    clearGrid("box");
-
     container.style.setProperty('--grid-rows', num);
     container.style.setProperty('--grid-cols', num);
 
@@ -23,17 +21,16 @@ function buildGrid(num) {       //builds grid of divs; set all attributes
 
 function onHover(id) {          //function adds backgroundColor of 'black' to individual boxes
     document.getElementById(id).style.backgroundColor = "black";
-};
+}
 
 function reSet() {              //function to reset the game and prompt user for size of grid
     let gridSize = prompt("How big of a grid do you want (Enter 1 - 100)");
+
+    clearGrid("container");
     buildGrid(gridSize);
 }
 
-function clearGrid(className) { //function call to remove all box divs
-    var element = document.getElementsByClassName(className);
-    
-    while(element.length > 0) {
-        element[0].parentNode.removeChild(element[0]);
-    }
+function clearGrid(className) {
+    const element = document.getElementById(className);
+    element.textContent = '';
 }
